@@ -21,5 +21,6 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    QString gen_captcha(int n);
 };
-#endif // MAINWINDOW_H
+#endif

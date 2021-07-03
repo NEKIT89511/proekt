@@ -2,19 +2,13 @@
 #include "ui_mainwindow.h"
 #include <string.h>
 
-using namespace std;
-bool check_string(QString &captcha, QString &user_captcha){
-   return captcha.compare(user_captcha) == 0;
-}
-QString gen_captcha(int);
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 
 {
-
     ui->setupUi(this);
-
     ui->label_2->setText(gen_captcha(5));
 }
 
@@ -23,20 +17,15 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-
 QString gen_captcha(int n){
    time_t t;
    srand((unsigned)time(&t));
-
    char chrs[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
    QString captcha = "";
    while (n--)
       captcha.push_back(chrs[rand()%62]);
    return QString(captcha);
 }
-
-
-
 
 void MainWindow::on_pushButton_clicked()
 {
