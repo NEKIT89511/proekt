@@ -35,44 +35,10 @@ RES_FILE      =
 SED           = $(QMAKE) -install sed
 MOVE          = move
 SUBTARGETS    =  \
-		sub-- \
 		sub-Reg \
 		sub-reg
 
 
-sub---qmake_all:  FORCE
-	@if not exist .\ mkdir .\ & if not exist .\ exit 1
-	cd .\ && $(QMAKE) -o Makefile D:\Proekt\..pro -spec win32-msvc "CONFIG+=debug" "CONFIG+=qml_debug"
-	@set MAKEFLAGS=$(MAKEFLAGS)
-	cd .\ && $(MAKE) -f Makefile qmake_all
-sub--: $(MAKEFILE) FORCE
-	@if not exist .\ mkdir .\ & if not exist .\ exit 1
-	@set MAKEFLAGS=$(MAKEFLAGS)
-	cd .\ && ( if not exist Makefile $(QMAKE) -o Makefile D:\Proekt\..pro -spec win32-msvc "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile
-sub---make_first: FORCE
-	@if not exist .\ mkdir .\ & if not exist .\ exit 1
-	@set MAKEFLAGS=$(MAKEFLAGS)
-	cd .\ && ( if not exist Makefile $(QMAKE) -o Makefile D:\Proekt\..pro -spec win32-msvc "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile 
-sub---all: FORCE
-	@if not exist .\ mkdir .\ & if not exist .\ exit 1
-	@set MAKEFLAGS=$(MAKEFLAGS)
-	cd .\ && ( if not exist Makefile $(QMAKE) -o Makefile D:\Proekt\..pro -spec win32-msvc "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile all
-sub---clean: FORCE
-	@if not exist .\ mkdir .\ & if not exist .\ exit 1
-	@set MAKEFLAGS=$(MAKEFLAGS)
-	cd .\ && ( if not exist Makefile $(QMAKE) -o Makefile D:\Proekt\..pro -spec win32-msvc "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile clean
-sub---distclean: FORCE
-	@if not exist .\ mkdir .\ & if not exist .\ exit 1
-	@set MAKEFLAGS=$(MAKEFLAGS)
-	cd .\ && ( if not exist Makefile $(QMAKE) -o Makefile D:\Proekt\..pro -spec win32-msvc "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile distclean
-sub---install_subtargets: FORCE
-	@if not exist .\ mkdir .\ & if not exist .\ exit 1
-	@set MAKEFLAGS=$(MAKEFLAGS)
-	cd .\ && ( if not exist Makefile $(QMAKE) -o Makefile D:\Proekt\..pro -spec win32-msvc "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile install
-sub---uninstall_subtargets: FORCE
-	@if not exist .\ mkdir .\ & if not exist .\ exit 1
-	@set MAKEFLAGS=$(MAKEFLAGS)
-	cd .\ && ( if not exist Makefile $(QMAKE) -o Makefile D:\Proekt\..pro -spec win32-msvc "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile uninstall
 sub-Reg-qmake_all:  FORCE
 	@if not exist Reg\ mkdir Reg\ & if not exist Reg\ exit 1
 	cd Reg\ && $(QMAKE) -o Makefile D:\Proekt\Reg\Reg.pro -spec win32-msvc "CONFIG+=debug" "CONFIG+=qml_debug"
@@ -614,21 +580,17 @@ Proekt.pro:
 qmake: FORCE
 	@$(QMAKE) -o Makefile Proekt.pro -spec win32-msvc "CONFIG+=debug" "CONFIG+=qml_debug"
 
-qmake_all: sub---qmake_all sub-Reg-qmake_all sub-reg-qmake_all FORCE
+qmake_all: sub-Reg-qmake_all sub-reg-qmake_all FORCE
 
-make_first: sub---make_first sub-Reg-make_first sub-reg-make_first  FORCE
-all: sub---all sub-Reg-all sub-reg-all  FORCE
-clean: sub---clean sub-Reg-clean sub-reg-clean  FORCE
-distclean: sub---distclean sub-Reg-distclean sub-reg-distclean  FORCE
+make_first: sub-Reg-make_first sub-reg-make_first  FORCE
+all: sub-Reg-all sub-reg-all  FORCE
+clean: sub-Reg-clean sub-reg-clean  FORCE
+distclean: sub-Reg-distclean sub-reg-distclean  FORCE
 	-$(DEL_FILE) Makefile
 	-$(DEL_FILE) .qmake.stash
-install_subtargets: sub---install_subtargets sub-Reg-install_subtargets sub-reg-install_subtargets FORCE
-uninstall_subtargets: sub---uninstall_subtargets sub-Reg-uninstall_subtargets sub-reg-uninstall_subtargets FORCE
+install_subtargets: sub-Reg-install_subtargets sub-reg-install_subtargets FORCE
+uninstall_subtargets: sub-Reg-uninstall_subtargets sub-reg-uninstall_subtargets FORCE
 
-sub---debug:
-	@if not exist .\ mkdir .\ & if not exist .\ exit 1
-	@set MAKEFLAGS=$(MAKEFLAGS)
-	cd .\ && ( if not exist Makefile $(QMAKE) -o Makefile D:\Proekt\..pro -spec win32-msvc "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile debug
 sub-Reg-debug:
 	@if not exist Reg\ mkdir Reg\ & if not exist Reg\ exit 1
 	@set MAKEFLAGS=$(MAKEFLAGS)
@@ -637,12 +599,8 @@ sub-reg-debug:
 	@if not exist reg\ mkdir reg\ & if not exist reg\ exit 1
 	@set MAKEFLAGS=$(MAKEFLAGS)
 	cd reg\ && ( if not exist Makefile $(QMAKE) -o Makefile D:\Proekt\reg\reg.pro -spec win32-msvc "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile debug
-debug: sub---debug sub-Reg-debug sub-reg-debug
+debug: sub-Reg-debug sub-reg-debug
 
-sub---release:
-	@if not exist .\ mkdir .\ & if not exist .\ exit 1
-	@set MAKEFLAGS=$(MAKEFLAGS)
-	cd .\ && ( if not exist Makefile $(QMAKE) -o Makefile D:\Proekt\..pro -spec win32-msvc "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile release
 sub-Reg-release:
 	@if not exist Reg\ mkdir Reg\ & if not exist Reg\ exit 1
 	@set MAKEFLAGS=$(MAKEFLAGS)
@@ -651,12 +609,8 @@ sub-reg-release:
 	@if not exist reg\ mkdir reg\ & if not exist reg\ exit 1
 	@set MAKEFLAGS=$(MAKEFLAGS)
 	cd reg\ && ( if not exist Makefile $(QMAKE) -o Makefile D:\Proekt\reg\reg.pro -spec win32-msvc "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile release
-release: sub---release sub-Reg-release sub-reg-release
+release: sub-Reg-release sub-reg-release
 
-sub---check:
-	@if not exist .\ mkdir .\ & if not exist .\ exit 1
-	@set MAKEFLAGS=$(MAKEFLAGS)
-	cd .\ && ( if not exist Makefile $(QMAKE) -o Makefile D:\Proekt\..pro -spec win32-msvc "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile check
 sub-Reg-check:
 	@if not exist Reg\ mkdir Reg\ & if not exist Reg\ exit 1
 	@set MAKEFLAGS=$(MAKEFLAGS)
@@ -665,12 +619,8 @@ sub-reg-check:
 	@if not exist reg\ mkdir reg\ & if not exist reg\ exit 1
 	@set MAKEFLAGS=$(MAKEFLAGS)
 	cd reg\ && ( if not exist Makefile $(QMAKE) -o Makefile D:\Proekt\reg\reg.pro -spec win32-msvc "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile check
-check: sub---check sub-Reg-check sub-reg-check
+check: sub-Reg-check sub-reg-check
 
-sub---benchmark:
-	@if not exist .\ mkdir .\ & if not exist .\ exit 1
-	@set MAKEFLAGS=$(MAKEFLAGS)
-	cd .\ && ( if not exist Makefile $(QMAKE) -o Makefile D:\Proekt\..pro -spec win32-msvc "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile benchmark
 sub-Reg-benchmark:
 	@if not exist Reg\ mkdir Reg\ & if not exist Reg\ exit 1
 	@set MAKEFLAGS=$(MAKEFLAGS)
@@ -679,7 +629,7 @@ sub-reg-benchmark:
 	@if not exist reg\ mkdir reg\ & if not exist reg\ exit 1
 	@set MAKEFLAGS=$(MAKEFLAGS)
 	cd reg\ && ( if not exist Makefile $(QMAKE) -o Makefile D:\Proekt\reg\reg.pro -spec win32-msvc "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile benchmark
-benchmark: sub---benchmark sub-Reg-benchmark sub-reg-benchmark
+benchmark: sub-Reg-benchmark sub-reg-benchmark
 install:install_subtargets  FORCE
 
 uninstall: uninstall_subtargets FORCE

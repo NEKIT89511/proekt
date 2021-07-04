@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class regWindow; }
 QT_END_NAMESPACE
@@ -39,11 +40,12 @@ public:
    private:
        Ui::regWindow *ui;
        QString m_userName;
-       QString m_userFam();
-       QString m_userOtch();
-       QString m_userNum();
-       QString m_userPocht();
+       QString m_userFam;
+       QString m_userOtch;
+       QString m_userNum;
+       QString m_userPocht;
        QString m_userPass;
        QString m_userPass2;
    };
+
 #endif // REGWINDOW_H
